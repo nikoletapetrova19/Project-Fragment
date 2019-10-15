@@ -1,0 +1,99 @@
+package sk.itsovy.petrova.projectfragment;
+
+public class Fragment {
+    private int numerator;
+    private int denominator;
+
+    public Fragment(int numerator, int denominator){
+        if(denominator==0)
+            denominator=1;
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+    public Fragment(Fragment otherFragment){
+        numerator=otherFragment.getNumerator();
+        denominator=otherFragment.getDenominator();
+    }
+
+
+    public int getNumerator() {
+
+        return getNumerator();
+    }
+
+    public int setNumerator() {
+        return setNumerator();
+    }
+
+    public int getDenominator() {
+        return getDenominator();
+    }
+
+    public int setDenominator() {
+        return setDenominator();
+    }
+
+
+    public void changeToBasicShape() {
+        int commonDivisor = getTheLargestCommomDivisor();
+        numerator=numerator/commonDivisor;
+        denominator=denominator/commonDivisor;
+
+
+    }
+
+    public void extendFraction(int value) {
+        if (value != 0) {
+            numerator *= value;
+            denominator *= value;
+
+        }
+    }
+
+    public double getRealValue() {
+
+        return (double) numerator/ denominator;
+    }
+
+    public void reverse() {
+        int temp = numerator;
+        numerator = denominator;
+        denominator = temp;
+    }
+
+    public void opposite() {
+        numerator *= -1;
+    }
+
+    public Fragment copy() {
+        Fragment newFragment = new Fragment(numerator, denominator);
+        return newFragment;
+    }
+
+    private int getTheLargestCommomDivisor() {
+        /*if (numerator<denominator)
+              min = numerator;
+          else
+             min = denominator;
+         */
+        //namiesto if použijem ternárny operátor
+        int absNumerator = Math.abs(numerator);
+        int absDenominator = Math.abs(denominator);
+
+        int commonDivisor = absNumerator < absDenominator ? absNumerator : absDenominator;
+        while (absNumerator % commonDivisor != 0 || absDenominator % commonDivisor != 0) {
+            commonDivisor--;
+        }
+        return commonDivisor;
+    }
+    public boolean isFragmentInBasicShape(){
+        if (getTheLargestCommomDivisor()== 1)
+            return true;
+        else
+            return false;
+    }
+    @Override
+    public String toString(){
+        return numerator+" / "+denominator;
+    }
+}
