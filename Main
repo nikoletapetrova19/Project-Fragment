@@ -21,7 +21,15 @@ public class Main {
 
         Fragment f5=new Fragment(f1);
 
+        MixedNumber m1=new MixedNumber(4,2,7);
+        System.out.println(m1.toString());
 
+        MyMath myMath = new MyMath();
+        Fragment f6=myMath.add(f1,f2);
+        System.out.println(f6.toString());
+
+        f6=MyMath.sub(f1,f2);
+        System.out.println(f6.toString());
 
     }
 }
