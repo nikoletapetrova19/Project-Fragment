@@ -4,33 +4,32 @@ public class Fragment {
     private int numerator;
     private int denominator;
 
-    public Fragment(int numerator, int denominator){
+    public Fragment(int numerator, int denominator) {
         if(denominator==0)
             denominator=1;
         this.numerator = numerator;
         this.denominator = denominator;
     }
-    public Fragment(Fragment otherFragment){
+
+    public Fragment (Fragment otherFragment){
         numerator=otherFragment.getNumerator();
         denominator=otherFragment.getDenominator();
     }
 
-
     public int getNumerator() {
-
-        return getNumerator();
+        return numerator;
     }
 
-    public int setNumerator() {
-        return setNumerator();
+    public void setNumerator(int numerator) {
+        this.numerator = numerator;
     }
 
     public int getDenominator() {
-        return getDenominator();
+        return denominator;
     }
 
-    public int setDenominator() {
-        return setDenominator();
+    public void setDenominator(int denominator) {
+        this.denominator = denominator;
     }
 
 
@@ -96,4 +95,12 @@ public class Fragment {
     public String toString(){
         return numerator+" / "+denominator;
     }
+
+    public MixedNumber getMixedNumber(){
+        int value= numerator/ denominator;
+                Fragment f= new Fragment(numerator%denominator, denominator);
+        return new MixedNumber(value,f);
+    }
 }
+
+
